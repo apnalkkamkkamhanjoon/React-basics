@@ -5,7 +5,7 @@ const Hello = ({ color, name }) => {
 };
 
 Hello.defaultProps = {
-  name: "이름없음",
+  name: "no name",
 };
 
 export default Hello;
