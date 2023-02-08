@@ -15,16 +15,13 @@ function App() {
 
   const { username, email } = inputs;
 
-  const onChange = useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      setInputs({
-        ...inputs,
-        [name]: value,
-      });
-    },
-    []
-  );
+  const onChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setInputs((inputs) => ({
+      ...inputs,
+      [name]: value,
+    }));
+  }, []);
 
   const [users, setUsers] = useState([
     {
@@ -55,8 +52,8 @@ function App() {
       username,
       email,
     };
-    //setUsers(users.concat(user));
-    setUsers([...users, user]);
+    setUsers((users) => users.concat(user));
+    //setUsers([...users, user]);
     setInputs({
       username: "",
       email: "",
@@ -67,11 +64,11 @@ function App() {
   const onRemove = useCallback((id) => {
     // user.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
     // = user.id 가 id 인 것을 제거함
-    setUsers(users.filter((user) => user.id !== id));
-  },[]);
+    setUsers((users) => users.filter((user) => user.id !== id));
+  }, []);
 
   const onToggle = useCallback((id) => {
-    setUsers(
+    setUsers((users) =>
       users.map((user) =>
         user.id === id ? { ...user, active: !user.active } : user
       )
