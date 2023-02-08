@@ -20,4 +20,4 @@ const CreateUser = ({username, onChange, email, onCreate}) => {
   );
 };
 
-export default CreateUser;
+export default React.memo(CreateUser);
